@@ -41,7 +41,7 @@ $(RUNTIME_ZIP): Dockerfile bootstrap
 $(EXAMPLE_ZIP): example/lib/example.ex example/mix.exs $(RUNTIME_ZIP)
 	# docker run -w /code -v $(PWD)/example:/code -u $(shell id -u):$(shell id -g) -e MIX_ENV=prod $(LAYER_NAME) mix do test, package
 	# don't understand why $(PWD) wasn't resolving to /vagrant/code/elixir_lambda
-	docker run -w /code -v /vagrant/code/elixir_lambda/example:/code -u $(shell id -u):$(shell id -g) -e MIX_ENV=prod $(LAYER_NAME) mix do test, package
+	docker run -w /code -v /vagrant/code/elixir_lambda/example:/code -u $(shell id -u):$(shell id -g) -e MIX_ENV=prod $(LAYER_NAME) mix do hex.organization auth cuatro --key <replace with 1pass travis cuatro hex key>, deps.get, test, package
 
 aws-check:
 	@echo "Performing pre-flight check..."
