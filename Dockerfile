@@ -23,7 +23,6 @@ COPY runtime/ /work/runtime/
 
 RUN cd /work/runtime && \
   mix local.hex --force && \
-  mix local.rebar --force && \
   mix deps.get && \
   mix test && \
   MIX_ENV=prod mix package && \
