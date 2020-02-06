@@ -11,14 +11,7 @@ ADD http://erlang.org/download/otp_src_${ERLANG_VERSION}.tar.gz /work/
 
 RUN tar xf otp_src_${ERLANG_VERSION}.tar.gz && \
   cd /work/otp_src_${ERLANG_VERSION} && \
-  ./configure --disable-hipe --without-termcap --without-javac \
-    --without-dialyzer --without-diameter --without-debugger --without-edoc \
-    --without-eldap --without-erl_docgen --without-mnesia --without-observer \
-    --without-odbc --without-tftp --without-wx --without-xmerl --without-otp_mibs \
-    --without-reltool --without-snmp --without-tftp \
-    --without-common_test --without-eunit --without-ftp --without-hipe \
-    --without-megaco --without-sasl  --without-syntax_tools --without-tools \
-    --prefix=/opt && \
+  ./configure --prefix=/opt && \
   make install && \
   cd /opt && unzip /work/Precompiled.zip && \
   rm -r /opt/lib/erlang/lib/*/src /opt/lib/erlang/misc /opt/lib/erlang/usr && \
