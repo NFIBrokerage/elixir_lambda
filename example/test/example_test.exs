@@ -3,7 +3,7 @@ defmodule ExampleTest do
   doctest Example
 
   test "greets the world" do
-    trigger_json = %{
+    trigger = %{
       "body" => %{
         "command_type" => "Hackathon.Counter.IncrementCount",
         "version" => 1,
@@ -11,6 +11,6 @@ defmodule ExampleTest do
       }
     }
 
-    assert Example.hello(trigger_json, %{}) == {:ok, %{}}
+    assert Example.hello(trigger, %{}) == {:ok, %{}}
   end
 end
