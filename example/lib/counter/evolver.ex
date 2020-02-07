@@ -13,7 +13,5 @@ defmodule Hackathon.Counter.Evolver do
       )
       when version >= 1 do
     Map.update!(state, :total_count, fn count -> count + 1 end)
-    # state
-    # state
   end
 end
