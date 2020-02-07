@@ -35,8 +35,12 @@ defmodule Example do
 
     :ok = Hackathon.Counter.AggregateRepo.persist_events([event], counter_id)
 
-    # If the ExStreamClient isn't stopped, we get sporadic failures from
-    # repeated lambda calls.
+    events = Hackathon.Counter.AggregateRepo.fetch_aggregate_event_history(counter_id)
+
+    Logger.info("Counter #{counter_id} event history is #{inspect(events)}")
+
+    # At one point we thought we needed to explicitly stop the ExStream worker
+    # to avoid sporadic failures. That's since been cast in doubt.
     GenServer.stop(ex_stream_client_pid)
 
     # need to return an empty map because the default API Gateway response
