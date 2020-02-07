@@ -24,7 +24,7 @@ artifact-bucket: aws-check .cfn-artifact-bucket
 elixir-example: aws-check .cfn-elixir-example
 
 test: aws-check elixir-example
-	aws lambda invoke --function-name elixir-runtime-example --payload '{"text":"Hello"}' test-output.txt && \
+	aws lambda invoke --function-name hackathon-counter --payload '{"body": "{\"command_type\": \"Hackathon.Counter.IncrementCount\",\"version\": 1,\"counter_id\":\"asdf\"}"}' test-output.txt && \
 	echo "=== Lambda responded with: ===" && cat test-output.txt && echo && echo "=== end-of-output ==="
 
 

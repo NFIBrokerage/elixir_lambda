@@ -32,7 +32,7 @@ Resources:
   ExampleFunction:
     Type: AWS::Lambda::Function
     Properties:
-      FunctionName: elixir-runtime-example
+      FunctionName: hackathon-counter
       Handler: Example.hello
       Runtime: provided
       Code:
