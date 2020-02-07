@@ -24,7 +24,13 @@ defmodule Example do
 
     Logger.info("Connected to EventStore #{inspect(ex_stream_client_pid)}")
 
-    command = trigger |> Poison.decode!(keys: :atoms) |> Map.get(:body)
+    # the LambdaRuntime is already decoding the trigger with Jason.decode,
+    # but we gotta have our atom keys, so let's re-encode and decode.
+    command =
+      trigger
+      |> Poison.encode!()
+      |> Poison.decode!(keys: :atoms)
+      |> Map.get(:body)
 
     Hackathon.Counter.CommandHandler.handle_command(command)
 
