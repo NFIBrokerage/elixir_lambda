@@ -24,13 +24,9 @@ defmodule Example do
 
     Logger.info("Connected to EventStore #{inspect(ex_stream_client_pid)}")
 
-    # the LambdaRuntime is already decoding the trigger with Jason.decode,
-    # but we gotta have our atom keys, so let's re-encode and decode.
-    command =
-      trigger
-      |> Poison.encode!()
-      |> Poison.decode!(keys: :atoms)
-      |> Map.get(:body)
+    # the LambdaRuntime decodes the top level of the trigger message as JSON
+    # but it does not recursively decode the entire trigger message
+    command = trigger["body"] |> Poison.decode!(keys: :atoms)
 
     Hackathon.Counter.CommandHandler.handle_command(command)
 

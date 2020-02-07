@@ -4,11 +4,13 @@ defmodule ExampleTest do
 
   test "greets the world" do
     trigger = %{
-      "body" => %{
-        "command_type" => "Hackathon.Counter.IncrementCount",
-        "version" => 1,
-        "counter_id" => "asdf"
+      "body" => """
+      {
+        "command_type": "Hackathon.Counter.IncrementCount",
+        "version": 1,
+        "counter_id": "asdf"
       }
+      """
     }
 
     assert Example.hello(trigger, %{}) == {:ok, %{}}
