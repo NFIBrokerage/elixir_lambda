@@ -8,15 +8,10 @@ defmodule Hackathon.Counter.Evolver do
   end
 
   def evolve(
-        %{event_type: "Hackathon.Counter.CountIncremented", version: version} =
-          event,
+        %{event_type: "Hackathon.Counter.CountIncremented", version: version} = event,
         %State{} = state
       )
       when version >= 1 do
-    state
-  end
-
-  def evolve(_event, state) do
-    state
+    Map.update!(state, :total_count, fn count -> count + 1 end)
   end
 end

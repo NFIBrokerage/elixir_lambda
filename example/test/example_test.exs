@@ -3,6 +3,16 @@ defmodule ExampleTest do
   doctest Example
 
   test "greets the world" do
-    assert Example.hello(%{}, %{}) == {:ok, %{}}
+    trigger = %{
+      "body" => """
+      {
+        "command_type": "Hackathon.Counter.IncrementCount",
+        "version": 1,
+        "counter_id": "asdf"
+      }
+      """
+    }
+
+    assert Example.hello(trigger, %{}) == {:ok, %{}}
   end
 end
