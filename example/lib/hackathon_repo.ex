@@ -1,11 +1,14 @@
 defmodule Hackathon.Repo do
   @moduledoc false
 
+  require Logger
+
   use ReadModelRepo.EctoRepo,
     otp_app: :hackathon,
     adapter: Ecto.Adapters.Postgres
 
   def init(_, config) do
+    Logger.info("#{__MODULE__} init(_, #{inspect(config)})")
     {:ok, place_connection_identifier(config, connection_identifier())}
   end
 

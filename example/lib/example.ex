@@ -10,7 +10,17 @@ defmodule Example do
     Logger.info("Trigger: #{inspect(trigger)}")
     Logger.info("Context: #{inspect(context)}")
 
-    Hackathon.Repo.start_link()
+    # db_config = [
+    #   database: "agora_blue",
+    #   username: "agora_admin",
+    #   password: "watermeloncats",
+    #   hostname: "hyperion52.app.relaytms.com",
+    #   pool_size: 10
+    # ]
+
+    # Hackathon.Repo.start_link(db_config)
+    repo_start_result = Hackathon.Repo.start_link()
+    Logger.info("repo_start_result: #{inspect(repo_start_result)}")
     Logger.info(inspect(Hackathon.Repo.config()))
 
     query =
@@ -19,6 +29,7 @@ defmodule Example do
       )
 
     # Send the query to the repository
+    Logger.info("About to query")
     query_result = Hackathon.Repo.all(query)
     Logger.info("Query returned: #{inspect(query_result)}")
 
