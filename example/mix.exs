@@ -21,7 +21,11 @@ defmodule Example.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:aggregate_repo, "~> 1.0.0", organization: "cuatro"}
+      {:aggregate_repo, "~> 1.0.0", organization: "cuatro"},
+      {:ecto_sql, "~> 3.1"},
+      {:postgrex, ">= 0.0.0"},
+      {:read_model_repo, "~> 2.0", organization: "cuatro"},
+      {:read_model_repo_ecto, "~> 1.2", organization: "cuatro"}
     ]
   end
 end
