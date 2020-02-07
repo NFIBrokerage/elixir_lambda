@@ -1,8 +1,8 @@
 defmodule ExampleTest do
   use ExUnit.Case
-  # doctest Example
+  doctest Example
 
-  # test "greets the world" do
-  #   assert Example.hello(%{}, %{}) == {:ok, nil}
-  # end
+  test "greets the world" do
+    assert Example.hello(%{}, %{}) == {:ok, %{}}
+  end
 end
