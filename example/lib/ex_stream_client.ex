@@ -1,4 +1,4 @@
-defmodule Example.ExStreamClient do
+defmodule ExStreamClient do
   use ExStream
   @moduledoc false
 end
