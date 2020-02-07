@@ -23,7 +23,9 @@ defmodule Example do
     {:ok, ex_stream_client_pid} = ExStreamClient.start_link(ex_stream_client_settings)
 
     Logger.info("Connected to EventStore #{inspect(ex_stream_client_pid)}")
-    Process.sleep(2000)
+    Process.sleep(1000)
+
+    Logger.info("Look Ma!!! I made a UUID!! #{inspect(UUID.uuid4())}")
 
     # If the ExStreamClient isn't stopped, we get sporadic failures from
     # repeated lambda calls.
